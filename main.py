@@ -2,8 +2,9 @@ from flask import Flask, render_template, request
 import requests
 import urllib.request
 import re
+import os
 
-API_KEY = "56bfac609b3e2ef9d47e1dac6084d8a3"
+API_KEY = os.environ.get("API_KEY")
 ENDPOINT = "https://api.themoviedb.org/3/"
 
 
