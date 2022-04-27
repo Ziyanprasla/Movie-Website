@@ -35,7 +35,9 @@
 
                             </div>
                             <div class="card__content">
-                                <h3 class="card__title"><a href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a></h3>
+                                <h3 class="card__title"><a
+                                        href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a>
+                                </h3>
                                 <span class="card__category">
 										<a>{{movie.release_date}}</a>
 									</span>
@@ -53,23 +55,22 @@
 </section>
 <!-- end home -->
 
-<!-- content -->
+<!-- TRENDING -->
 <section class="content">
     <div class="content__head">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- content title -->
-                    <h2 class="content__title">TRENDING</h2>
+                    <h2 class="content__title">Trending</h2>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <!-- content tabs -->
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+        <div class="tab-content">
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="1-tab">
                 <div class="row">
                     <!-- card -->
                     {% for movie in trending %}
@@ -84,7 +85,9 @@
 
                                 <div class="col-12 col-sm-8">
                                     <div class="card__content">
-                                        <h3 class="card__title"><a href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a></h3>
+                                        <h3 class="card__title"><a
+                                                href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a>
+                                        </h3>
                                         <span class="card__category">
 												<a>{{movie.release_date}}</a>
 
@@ -110,18 +113,21 @@
         </div>
     </div>
 </section>
-<!-- end content -->
+<!-- end TRENDING -->
 
-<!-- Upcoming -->
+<!-- NOW PLAYING -->
 <section class="section section--bg" data-bg="static/img/section/section.jpg">
+    <div class="content__head">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="content__title">NOW PLAYING</h2>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
-            <!-- section title -->
-            <div class="col-12">
-                <h2 class="section__title">NOW PLAYING IN THEATRES</h2>
-            </div>
-            <!-- end section title -->
-
             <!-- card -->
             {% for movie in now_playing %}
             <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
@@ -131,7 +137,9 @@
 
                     </div>
                     <div class="card__content">
-                        <h3 class="card__title"><a href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a></h3>
+                        <h3 class="card__title"><a
+                                href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a>
+                        </h3>
                         <span class="card__category">
 								<a>{{movie.release_date}}</a>
 
@@ -146,7 +154,61 @@
         </div>
     </div>
 </section>
-<!-- end upcoming -->
+<!-- end NOW PLAYING -->
+
+<!-- Upcoming -->
+<section class="content">
+    <div class="content__head">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- content title -->
+                    <h2 class="content__title">Upcoming</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+                <div class="row">
+                    <!-- card -->
+                    {% for movie in upcoming %}
+                    <div class="col-6 col-sm-12 col-lg-6">
+                        <div class="card card--list">
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <div class="card__cover">
+                                        <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-8">
+                                    <div class="card__content">
+                                        <h3 class="card__title"><a
+                                                href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a>
+                                        </h3>
+                                        <span class="card__category">
+												<a>{{movie.release_date}}</a>
+
+											</span>
+                                        <div class="card__description">
+                                            <p>{{movie.overview}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- end card -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end Upcoming -->
 
 
 <!-- JS -->

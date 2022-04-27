@@ -31,7 +31,8 @@
                         <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
                             <div class="card__content">
                                 <div class="card__wrap">
-                                    <span class="card__rate"><i class="icon ion-ios-star"></i>{{data.vote_average}}</span>
+                                    <span class="card__rate"><i
+                                            class="icon ion-ios-star"></i>{{data.vote_average}}</span>
 
                                 </div>
 
@@ -72,41 +73,39 @@
     <div class="content__head">
         <div class="container">
             <div class="row">
-                <div>
-                    <!-- sidebar -->
-                    <div>
-                        <div class="row">
-                            <!-- section title -->
-                            <div class="col-12">
-                                <h2 class="section__title section__title--sidebar">Recommended for you</h2>
+                <div class="row">
+
+                    <!-- section title -->
+                    <div class="col-12">
+                        <h2 class="section__title section__title--sidebar">Recommended for you</h2>
+                    </div>
+                    <!-- end section title -->
+
+                    <!-- card -->
+                    {% for movie in similar_movies %}
+                    <div class="col-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
+
                             </div>
-                            <!-- end section title -->
-
-                            <!-- card -->
-                            {% for movie in similar_movies %}
-                            <div class="col-2">
-                                <div class="card">
-                                    <div class="card__cover">
-                                        <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
-
-                                    </div>
-                                    <div class="card__content">
-                                        <h3 class="card__title"><a href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a></h3>
-                                        <span class="card__category">
+                            <div class="card__content">
+                                <h3 class="card__title"><a
+                                        href="{{url_for('details', id=movie.id, name=movie.original_title, genre=movie.genre_ids)}}">{{movie.original_title}}</a>
+                                </h3>
+                                <span class="card__category">
 										<a>{{movie.release_date}}</a>
 									</span>
-                                        <span class="card__rate"><i class="icon ion-ios-star">{{movie.vote_average}}</i></span>
-                                    </div>
-                                </div>
+                                <span class="card__rate"><i class="icon ion-ios-star">{{movie.vote_average}}</i></span>
                             </div>
-                            {% endfor %}
-                            <!-- end card -->
-
-
                         </div>
-                        <!-- end sidebar -->
                     </div>
+                    {% endfor %}
+                    <!-- end card -->
+
+
                 </div>
+                <!-- end sidebar -->
             </div>
         </div>
     </div>

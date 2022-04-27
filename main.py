@@ -12,6 +12,7 @@ ENDPOINT = "https://api.themoviedb.org/3/"
 popular = []
 now_playing = []
 trending = []
+upcoming = []
 for i in range(1, 5):
     params = {
         "api_key": API_KEY,
@@ -38,6 +39,20 @@ for i in range(1, 2):
             now_playing.append(movie)
 
 
+for i in range(1, 3):
+    params = {
+        "api_key": API_KEY,
+        "region": "US",
+        "page": i,
+    }
+    get_upcoming = requests.get(f"{ENDPOINT}movie/upcoming", params=params)
+    get_upcoming_data = get_upcoming.json()["results"]
+    for movie in get_upcoming_data:
+        if movie["original_language"] == "en" and movie["poster_path"]:
+            upcoming.append(movie)
+    print(upcoming)
+
+
 for i in range(1, 2):
     params = {
         "api_key": API_KEY,
@@ -55,7 +70,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html", popular=popular, now_playing=now_playing, trending=trending)
+    return render_template("index.html", popular=popular, now_playing=now_playing, trending=trending, upcoming=upcoming)
 
 
 @app.route("/details")
